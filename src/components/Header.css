@@ -1,0 +1,16 @@
+Header {
+    font-family: 'Roboto Condensed', sans-serif; /* Fontu Roboto Condensed */
+    background-color: #CE2829; /* kırmızı arka plan */
+    color: #5F5F5F; /* Açık gri yazı rengi */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+Header .nav a {
+    font-family: 'Roboto Condensed', sans-serif; /* Fontu Roboto Condensed */
+    background-color: #CE2829; /* kırmızı arka plan */
+    color: #5F5F5F; /* Açık gri yazı rengi */
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Yatay hizalama */
+}
