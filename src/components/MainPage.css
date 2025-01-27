@@ -1,0 +1,8 @@
+MainPage {
+    font-family: 'Roboto Condensed', sans-serif; /* Fontu Roboto Condensed */
+    background-image: url('images/iteration-1-images/home-banner.png'); /* Görselin doğru formatı */
+    color: #5F5F5F; /* Açık gri yazı rengi */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
