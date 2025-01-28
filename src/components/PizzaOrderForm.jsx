@@ -4,13 +4,13 @@ import "./PizzaOrderForm.css";
 import "./Header.css";
 import { useHistory } from "react-router-dom";  // useHistory hook'unu import ediyoruz
 
-/*export const errorMessages ={
-  ad:"Lütfen adınızı minimum 4 karaktyer olacak şekilde giriniz.",
+export const errorMessages ={
+  ad:"Lütfen adınızı minimum 4 karakter olacak şekilde giriniz.",
   boyut: "Lütfen pizza boyutu seçiniz.",
   kalinlik:"Lütfen hamur kalınlığı seçiniz.",
   malzeme: "Lütfen en az 4, en çok 10 adet malzeme seçiniz.",
 
-} */
+} 
 const PizzaOrderForm = () => {
   const [name, setName] = useState(""); // İsim alanı için state
   const [size, setSize] = useState("");//Pizza boyu
@@ -37,7 +37,7 @@ const PizzaOrderForm = () => {
     "Kanada Jambonu",
     "Domates",
     "Jalapeno",
-    "Sucuk",
+    "Kasap Sucuk",
   ];
 //Malzeme seçim fonksiyonu
 const handleToppingChange = (topping) => {
@@ -161,7 +161,7 @@ const handleToppingChange = (topping) => {
 
 
 
-        <div className="form-group">
+        <div className="form-group2">
           <label className="form-label">Hamur Seç *</label>
           <select
             className="form-select"
@@ -183,7 +183,8 @@ const handleToppingChange = (topping) => {
 
         <div className="form-group">
           <label className="form-label">
-            Ek Malzemeler (5₺/malzeme, min4, max 10)
+            Ek Malzemeler 
+            <p>(En fazla 10, en az 4 malzeme seçebilirsiniz.5₺)</p>
           </label>
           <div className="form-toppings">
             {toppingOptions.map((topping) => (

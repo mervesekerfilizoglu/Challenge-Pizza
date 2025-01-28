@@ -10,7 +10,15 @@ body {
 h1, h2, p, label {
   font-family: 'Barlow', sans-serif; /* Başlıklar ve etiketler için Barlow fontu */
 }
-
+.form-container .form-subtitle {
+  color: #292929; 
+  font-family: 'Barlow', sans-serif;
+  text-align: left;
+}
+.form-container .form-price, 
+.form-container .description {
+  text-align: left;
+}
 /* Form Konteyneri */
 .form-container {
   max-width: 600px;
@@ -34,20 +42,40 @@ h1, h2, p, label {
 /* Alt Başlık */
 .form-subtitle {
   font-size: 22px;
-  color: black; /* Açık gri */
+  color: #292929; /*  gri */
   margin-bottom: 10px;
 }
 
 /* Fiyat */
 .form-price {
   font-size: 18px;
-  color: black;
+  color: #292929;;
   margin-bottom: 20px;
 }
 
 /* Form Grupları */
 .form-group {
   margin-bottom: 20px;
+  text-align: left; /* Formdaki tüm öğeleri sola yasla */
+}
+
+
+.form-options {
+  display: flex;
+  flex-direction: column; /* Elementleri dikey (alt alta) hizalar */
+  margin-bottom: 10px;
+}
+.form-option input {
+  margin-right: 10px; /* Radyo butonlarının sağ tarafına boşluk ekler */
+}
+
+
+.form-group2 {
+  text-align: right;
+}
+.form-select {
+
+  text-align: right; 
 }
 
 /* Etiketler */
@@ -135,6 +163,15 @@ h1, h2, p, label {
   font-size: 18px;
 }
 
+
+.form-group.form-quantity {
+  display: flex; /* Flexbox kullanarak hizalama yapıyoruz */
+  justify-content: flex-start; /* Butonları sola yaslıyoruz */
+  align-items: center; /* Dikey hizalama */
+}
+
+
+
 .quantity-button:hover {
   background-color: #CE2829; /* Kırmızı renk */
   color: white;
@@ -187,3 +224,38 @@ h1, h2, p, label {
   margin-top: 10px;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .form-container {
+    padding: 15px; /* Mobilde daha küçük padding */
+  }
+
+  .form-group {
+    width: 100%; /* Form öğelerinin genişliğini %100 yap */
+   
+  }
+
+  /* Sipariş Toplamı kısmını ortalar */
+  .form-total {
+    text-align: center;
+    width: 100%; /* Toplam kısmı da tüm genişliği kaplasın */
+  }
+
+  /* Sipariş Ver butonu */
+  .form-submit {
+    width: 100%; /* Butonun tam genişlikte olmasını sağlarız */
+  }
+
+  /* Quantity butonları kısmı */
+  .form-quantity {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Butonlar arasına boşluk bırakır */
+    position: absolute;
+    bottom: 20px; /* Sayfanın alt kısmına 20px mesafe bırakır */
+    left: 20px; /* Sayfanın sol kısmına 20px mesafe bırakır */
+    width: auto; /* Genişlik otomatik olacak */
+  }
+
+}
+

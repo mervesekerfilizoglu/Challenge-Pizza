@@ -9,7 +9,8 @@ Header {
 Header .nav a {
     font-family: 'Roboto Condensed', sans-serif; /* Fontu Roboto Condensed */
     background-color: #CE2829; /* kırmızı arka plan */
-    color: #5F5F5F; /* Açık gri yazı rengi */
+    color: white; /*  yazı rengi */
+    text-decoration: none;
     margin: 0;
     padding: 0;
     text-align: center; /* Yatay hizalama */
