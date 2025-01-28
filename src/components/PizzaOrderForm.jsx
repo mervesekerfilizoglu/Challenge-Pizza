@@ -125,6 +125,7 @@ const handleToppingChange = (topping) => {
             placeholder="Adınızı giriniz"
             required
             minLength="3"  // Min 3 karakter 
+            data-cy="ad-input"
           />
         </div>
 
@@ -142,6 +143,7 @@ const handleToppingChange = (topping) => {
       checked={size === option}
       onChange={() => setSize(option)}
       required
+      data-cy="size-input"
     />
     <span>{option}</span>
   </label>
@@ -163,6 +165,7 @@ const handleToppingChange = (topping) => {
             <option value="İnce">İnce</option>
             <option value="Normal">Normal</option>
             <option value="Kalın">Kalın</option>
+            data-cy="hamur-input"
           </select>
         </div>
 
@@ -179,6 +182,7 @@ const handleToppingChange = (topping) => {
                   type="checkbox"
                   checked={toppings.includes(topping)}
                   onChange={() => handleToppingChange(topping)}
+                  data-cy="ekler-input"
                 />
                 <span>{topping}</span>
               </label>
