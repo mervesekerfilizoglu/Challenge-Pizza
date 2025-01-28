@@ -4,6 +4,13 @@ import "./PizzaOrderForm.css";
 import "./Header.css";
 import { useHistory } from "react-router-dom";  // useHistory hook'unu import ediyoruz
 
+/*export const errorMessages ={
+  ad:"Lütfen adınızı minimum 4 karaktyer olacak şekilde giriniz.",
+  boyut: "Lütfen pizza boyutu seçiniz.",
+  kalinlik:"Lütfen hamur kalınlığı seçiniz.",
+  malzeme: "Lütfen en az 4, en çok 10 adet malzeme seçiniz.",
+
+} */
 const PizzaOrderForm = () => {
   const [name, setName] = useState(""); // İsim alanı için state
   const [size, setSize] = useState("");//Pizza boyu
@@ -56,7 +63,8 @@ const handleToppingChange = (topping) => {
     const toppingsCost = toppings.length * toppingPrice;//seçilen malz toplam maliyet
     return (basePrice + toppingsCost) * quantity;//ödenecek fiyat
   };
-//Form Göndermek için Fonksiyon
+
+  //Form Göndermek için Fonksiyon
 
   const handleSubmit = async (e) => {
     e.preventDefault();//sayfa yenilenmesin
@@ -160,13 +168,15 @@ const handleToppingChange = (topping) => {
             value={crust}
             onChange={(e) => setCrust(e.target.value)}
             required
+            data-cy="hamur-input"
           >
             <option value="">Hamur Kalınlığı</option>
             <option value="İnce">İnce</option>
             <option value="Normal">Normal</option>
             <option value="Kalın">Kalın</option>
-            data-cy="hamur-input"
+            
           </select>
+          
         </div>
 
 
