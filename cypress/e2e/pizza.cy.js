@@ -1,5 +1,5 @@
 
-//import { errorMessages } from "../../src/components/PizzaOrderForm";
+
 describe('Pizza Order Form', () => {
   describe('Error Messages', () => {
     it('Name input throws error for less than 3 chars', () => {
@@ -8,10 +8,10 @@ describe('Pizza Order Form', () => {
       // // Arrange
       cy.get('[data-cy="ad-input"]').should('be.visible');
       // Act - Ad alanına geçersiz bir metin giriyoruz
-      cy.get('[data-cy="ad-input"]').type('me');
+      cy.get('[data-cy="ad-input"]').type('merve');
       
       // Assert - Hata mesajını doğrula
-     // cy.contains(errorMessages.ad);
+      cy.contains("Lütfen adınızı minimum 4 karakter olacak şekilde giriniz.").should('be.visible');
     });
   });
 
