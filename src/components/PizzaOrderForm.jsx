@@ -4,24 +4,24 @@ import "./PizzaOrderForm.css";
 import "./Header.css";
 import { useHistory } from "react-router-dom";  // useHistory hook'unu import ediyoruz
 
-export const errorMessages ={
-  ad:"Lütfen adınızı minimum 4 karakter olacak şekilde giriniz.",
+export const errorMessages = {
+  ad: "Lütfen adınızı minimum 4 karakter olacak şekilde giriniz.",
   boyut: "Lütfen pizza boyutu seçiniz.",
-  kalinlik:"Lütfen hamur kalınlığı seçiniz.",
+  kalinlik: "Lütfen hamur kalınlığı seçiniz.",
   malzeme: "Lütfen en az 4, en çok 10 adet malzeme seçiniz.",
+};
 
-} 
 const PizzaOrderForm = () => {
   const [name, setName] = useState(""); // İsim alanı için state
-  const [size, setSize] = useState("");//Pizza boyu
-  const [crust, setCrust] = useState("");//Hamur türü
-  const [toppings, setToppings] = useState([]);//Seçilen malzeme dizisi
-  const [note, setNote] = useState("");//Kullanıcıdan gelen sipariş notu
-  const [quantity, setQuantity] = useState(1);//Sipariş  adedi
-  const [isSubmitting, setIsSubmitting] = useState(false); // Form gönderimi sırasında butonun devre dışı olsun.
+  const [size, setSize] = useState(""); // Pizza boyu
+  const [crust, setCrust] = useState(""); // Hamur türü
+  const [toppings, setToppings] = useState([]); // Seçilen malzeme dizisi
+  const [note, setNote] = useState(""); // Kullanıcıdan gelen sipariş notu
+  const [quantity, setQuantity] = useState(1); // Sipariş adedi
+  const [isSubmitting, setIsSubmitting] = useState(false); // Form gönderimi sırasında butonun devre dışı olması
+  const [nameWarning, setNameWarning] = useState(""); // İsim uyarısı için state
 
   const history = useHistory();
-
 
   const toppingOptions = [
     "Pepperoni",
@@ -39,12 +39,13 @@ const PizzaOrderForm = () => {
     "Jalapeno",
     "Kasap Sucuk",
   ];
-//Malzeme seçim fonksiyonu
-const handleToppingChange = (topping) => {
+
+  // Malzeme seçim fonksiyonu
+  const handleToppingChange = (topping) => {
     if (toppings.includes(topping)) {
       const updatedToppings = toppings.filter((t) => t !== topping);
       if (updatedToppings.length >= 4) {
-        setToppings(updatedToppings); // Malzeme zaten seçilmişse, diziden kaldır ve minimum 4 malz olacak
+        setToppings(updatedToppings); // Malzeme zaten seçilmişse, diziden kaldır ve minimum 4 malzeme olacak
       } else {
         alert("En az 4 malzeme seçmelisiniz.");
       }
@@ -56,28 +57,40 @@ const handleToppingChange = (topping) => {
       }
     }
   };
-//Toplam Fiyat Hesaplama
+
+  // Toplam Fiyat Hesaplama
   const calculateTotal = () => {
-    const basePrice = 85.5;//pizza fiyatı
-    const toppingPrice = 5;//malz ek ücretleri
-    const toppingsCost = toppings.length * toppingPrice;//seçilen malz toplam maliyet
-    return (basePrice + toppingsCost) * quantity;//ödenecek fiyat
+    const basePrice = 85.5; // pizza fiyatı
+    const toppingPrice = 5; // malzeme ek ücretleri
+    const toppingsCost = toppings.length * toppingPrice; // seçilen malzeme toplam maliyet
+    return (basePrice + toppingsCost) * quantity; // ödenecek fiyat
   };
 
-  //Form Göndermek için Fonksiyon
+  // İsim değişikliği ve uyarı kontrolü
+  const handleNameChange = (e) => {
+    const inputName = e.target.value;
+    setName(inputName);
 
+    // İsim uzunluğu kontrolü
+    if (inputName.length < 3) {
+      setNameWarning("Lütfen adınızı minimum 4 karakter olacak şekilde giriniz.");
+    } else {
+      setNameWarning("");
+    }
+  };
+
+  // Form Göndermek için Fonksiyon
   const handleSubmit = async (e) => {
-    e.preventDefault();//sayfa yenilenmesin
+    e.preventDefault(); // sayfa yenilenmesin
 
-
-    if (!name || !size || !crust || toppings.length === 0) {//Bütün alanlar doldurulmuş mu?
+    if (!name || !size || !crust || toppings.length === 0) {
       alert("Lütfen tüm gerekli alanları doldurun.");
       return;
     }
 
     setIsSubmitting(true);
 
-    const orderData = {//sipariş objesi
+    const orderData = { // sipariş objesi
       isim: name,
       boyut: size,
       hamur: crust,
@@ -87,41 +100,33 @@ const handleToppingChange = (topping) => {
     };
 
     try {
-        const response = await axios.post("https://reqres.in/api/pizza", orderData, { // sipariş verilerini sunucuya gönder
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-    
-          const result = response.data;
-          console.log("Sipariş Özeti:", result);
-          alert("Sipariş başarıyla gönderildi!");
+      const response = await axios.post("https://reqres.in/api/pizza", orderData, { // sipariş verilerini sunucuya gönder
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
+      const result = response.data;
+      console.log("Sipariş Özeti:", result);
+      alert("Sipariş başarıyla gönderildi!");
 
-          history.push("/OrderResult");// History.push ile yönlendir
-
-
-
-        } catch (error) {
-          console.error("Sipariş gönderiminde hata:", error);
-          alert("Sipariş gönderilirken bir hata oluştu.");
-        } finally {
-          setIsSubmitting(false); // butonu etkinleştir
-        }
-      };
+      history.push("/OrderResult"); // History.push ile yönlendir
+    } catch (error) {
+      console.error("Sipariş gönderiminde hata:", error);
+      alert("Sipariş gönderilirken bir hata oluştu.");
+    } finally {
+      setIsSubmitting(false); // butonu etkinleştir
+    }
+  };
 
   return (
-    <div className="form-container"> 
-    
-
+    <div className="form-container">
       <form onSubmit={handleSubmit}>
         <h2 className="form-subtitle">Position Absolute Acı Pizza</h2>
         <p className="form-price">85.50₺</p>
         <p className="description">
-          Frontend Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre.Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir..Küçük bir pizzaya bazen pizzetta denir.
+          Frontend Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir.. Küçük bir pizzaya bazen pizzetta denir.
         </p>
-
-
 
         <div className="form-group">
           <label className="form-label">İsim *</label>
@@ -129,37 +134,34 @@ const handleToppingChange = (topping) => {
             type="text"
             className="form-input"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={handleNameChange} // handleNameChange kullanıldı
             placeholder="Adınızı giriniz"
             required
-            minLength="3"  // Min 3 karakter 
+            minLength="3" // Min 3 karakter
             data-cy="ad-input"
           />
+          {nameWarning && <p style={{ color: "red" }}>{nameWarning}</p>} {/* Uyarı mesajı */}
         </div>
-
-
 
         <div className="form-group">
           <label className="form-label">Boyut Seç *</label>
           <div className="form-options">
-          {["Küçük", "Orta", "Büyük"].map((option) => (
-  <label key={option} className="form-option">
-    <input
-      type="radio"
-      name="size"
-      value={option}
-      checked={size === option}
-      onChange={() => setSize(option)}
-      required
-      data-cy="size-input"
-    />
-    <span>{option}</span>
-  </label>
-))}
+            {["Küçük", "Orta", "Büyük"].map((option) => (
+              <label key={option} className="form-option">
+                <input
+                  type="radio"
+                  name="size"
+                  value={option}
+                  checked={size === option}
+                  onChange={() => setSize(option)}
+                  required
+                  data-cy="size-input"
+                />
+                <span>{option}</span>
+              </label>
+            ))}
           </div>
         </div>
-
-
 
         <div className="form-group2">
           <label className="form-label">Hamur Seç *</label>
@@ -174,16 +176,12 @@ const handleToppingChange = (topping) => {
             <option value="İnce">İnce</option>
             <option value="Normal">Normal</option>
             <option value="Kalın">Kalın</option>
-            
           </select>
-          
         </div>
-
-
 
         <div className="form-group">
           <label className="form-label">
-            Ek Malzemeler 
+            Ek Malzemeler
             <p>(En fazla 10, en az 4 malzeme seçebilirsiniz.5₺)</p>
           </label>
           <div className="form-toppings">
@@ -201,8 +199,6 @@ const handleToppingChange = (topping) => {
           </div>
         </div>
 
-
-
         <div className="form-group">
           <label className="form-label">Sipariş Notu</label>
           <textarea
@@ -212,9 +208,6 @@ const handleToppingChange = (topping) => {
             onChange={(e) => setNote(e.target.value)}
           />
         </div>
-
-
-
 
         <div className="form-group form-quantity">
           <button
@@ -235,15 +228,11 @@ const handleToppingChange = (topping) => {
           </button>
         </div>
 
-
-
         <div className="form-group">
           <p className="form-total">
             Sipariş Toplamı: <span>{calculateTotal().toFixed(2)}₺</span>
           </p>
         </div>
-
-
 
         <button
           type="submit"
