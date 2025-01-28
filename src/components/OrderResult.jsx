@@ -17,12 +17,13 @@ export default function OrderResult() {
     };
 
     return (
+        <div className="OrderResult">
         <div className="form-container">
-            <form onSubmit={handleSubmit}>
+            
                 <p className="form-subtitle">TEBRİKLER!</p>
                 <p className="form-subtitle">SİPARİŞİNİZ ALINDI!</p>
-               
-            </form>
+                </div>
         </div>
     );
+
 }

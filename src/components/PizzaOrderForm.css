@@ -20,6 +20,7 @@ h1, h2, p, label {
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #292929;
 }
 
 /* Başlık */
@@ -34,14 +35,14 @@ h1, h2, p, label {
 /* Alt Başlık */
 .form-subtitle {
   font-size: 22px;
-  color: #5F5F5F; /* Açık gri */
+  color: black; /* Açık gri */
   margin-bottom: 10px;
 }
 
 /* Fiyat */
 .form-price {
   font-size: 18px;
-  color: #5F5F5F;
+  color: black;
   margin-bottom: 20px;
 }
 
