@@ -71,11 +71,12 @@ h1, h2, p, label {
 
 
 .form-group2 {
-  text-align: right;
+  text-align: left;
 }
 .form-select {
 
-  text-align: right; 
+  text-align: center; 
+  
 }
 
 /* Etiketler */
@@ -117,6 +118,17 @@ h1, h2, p, label {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* İki eleman arasına boşluk ekler */
+}
+
+.form-row .form-group,
+.form-row .form-group2 {
+  flex: 1; /* Eşit genişlikte olmalarını sağlar */
 }
 
 /* Malzeme Seçenekleri */
@@ -183,7 +195,7 @@ h1, h2, p, label {
   font-size: 18px;
   color: #CE2829; /* Kırmızı */
   margin-top: 15px;
-  text-align: center;
+  text-align: right;
 }
 
 /* Sipariş Ver Butonu */
@@ -199,6 +211,8 @@ h1, h2, p, label {
   cursor: pointer;
   font-size: 18px;
   transition: background-color 0.3s;
+  margin: 0; 
+
 }
 
 .form-submit:hover {
@@ -209,6 +223,23 @@ h1, h2, p, label {
   background-color: #ddd;
   cursor: not-allowed;
 }
+
+
+.form-row2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; 
+  gap: 10px;
+}
+
+.form-total,
+.form-submit {
+  text-align: right; 
+  width: auto;  
+}
+
+
+
 
 /* Uyarı Mesajları */
 .error-message {
@@ -224,6 +255,7 @@ h1, h2, p, label {
   margin-top: 10px;
   text-align: center;
 }
+
 
 @media (max-width: 768px) {
   .form-container {
@@ -245,17 +277,4 @@ h1, h2, p, label {
   .form-submit {
     width: 100%; /* Butonun tam genişlikte olmasını sağlarız */
   }
-
-  /* Quantity butonları kısmı */
-  .form-quantity {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px; /* Butonlar arasına boşluk bırakır */
-    position: absolute;
-    bottom: 20px; /* Sayfanın alt kısmına 20px mesafe bırakır */
-    left: 20px; /* Sayfanın sol kısmına 20px mesafe bırakır */
-    width: auto; /* Genişlik otomatik olacak */
-  }
-
 }
-

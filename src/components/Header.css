@@ -5,6 +5,7 @@ Header {
     margin: 0;
     padding: 0;
     text-align: center;
+    text-decoration: none;
 }
 Header .nav a {
     font-family: 'Roboto Condensed', sans-serif; /* Fontu Roboto Condensed */

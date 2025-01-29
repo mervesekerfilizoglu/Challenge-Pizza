@@ -4,13 +4,6 @@ import "./PizzaOrderForm.css";
 import "./Header.css";
 import { useHistory } from "react-router-dom";  // useHistory hook'unu import ediyoruz
 
-export const errorMessages = {
-  ad: "Lütfen adınızı minimum 4 karakter olacak şekilde giriniz.",
-  boyut: "Lütfen pizza boyutu seçiniz.",
-  kalinlik: "Lütfen hamur kalınlığı seçiniz.",
-  malzeme: "Lütfen en az 4, en çok 10 adet malzeme seçiniz.",
-};
-
 const PizzaOrderForm = () => {
   const [name, setName] = useState(""); // İsim alanı için state
   const [size, setSize] = useState(""); // Pizza boyu
@@ -20,6 +13,8 @@ const PizzaOrderForm = () => {
   const [quantity, setQuantity] = useState(1); // Sipariş adedi
   const [isSubmitting, setIsSubmitting] = useState(false); // Form gönderimi sırasında butonun devre dışı olması
   const [nameWarning, setNameWarning] = useState(""); // İsim uyarısı için state
+  const [sizeError, setSizeError] = useState("");
+  const [toppingError, setToppingError] = useState("");
 
   const history = useHistory();
 
@@ -40,18 +35,19 @@ const PizzaOrderForm = () => {
     "Kasap Sucuk",
   ];
 
+  const handleSizeChange = (option) => {
+    setSize(option);
+    setSizeError(""); // Clear error if a size is selected
+  };
+
   // Malzeme seçim fonksiyonu
   const handleToppingChange = (topping) => {
     if (toppings.includes(topping)) {
       const updatedToppings = toppings.filter((t) => t !== topping);
-      if (updatedToppings.length >= 4) {
-        setToppings(updatedToppings); // Malzeme zaten seçilmişse, diziden kaldır ve minimum 4 malzeme olacak
-      } else {
-        alert("En az 4 malzeme seçmelisiniz.");
-      }
+      setToppings(updatedToppings); // If topping is already selected, remove it
     } else {
       if (toppings.length < 10) {
-        setToppings([...toppings, topping]); // Maksimum 10 malzeme olacak şekilde kontrol
+        setToppings([...toppings, topping]); // Add topping if less than 10 are selected
       } else {
         alert("En fazla 10 malzeme seçebilirsiniz.");
       }
@@ -82,6 +78,17 @@ const PizzaOrderForm = () => {
   // Form Göndermek için Fonksiyon
   const handleSubmit = async (e) => {
     e.preventDefault(); // sayfa yenilenmesin
+
+    // Size validation
+    if (!size) {
+      setSizeError("Lütfen pizza boyutu seçiniz.");
+      return;
+    }
+
+    if (toppings.length < 4) {
+      setToppingError("Lütfen en az 4 adet malzeme seçiniz.");
+      return;
+    }
 
     if (!name || !size || !crust || toppings.length === 0) {
       alert("Lütfen tüm gerekli alanları doldurun.");
@@ -142,7 +149,7 @@ const PizzaOrderForm = () => {
           />
           {nameWarning && <p style={{ color: "red" }}>{nameWarning}</p>} {/* Uyarı mesajı */}
         </div>
-
+        <div className="form-row">
         <div className="form-group">
           <label className="form-label">Boyut Seç *</label>
           <div className="form-options">
@@ -178,6 +185,8 @@ const PizzaOrderForm = () => {
             <option value="Kalın">Kalın</option>
           </select>
         </div>
+        </div>
+
 
         <div className="form-group">
           <label className="form-label">
@@ -228,12 +237,14 @@ const PizzaOrderForm = () => {
           </button>
         </div>
 
+
+        <div className="form-row2">
         <div className="form-group">
           <p className="form-total">
             Sipariş Toplamı: <span>{calculateTotal().toFixed(2)}₺</span>
           </p>
         </div>
-
+      
         <button
           type="submit"
           className="form-submit"
@@ -241,6 +252,8 @@ const PizzaOrderForm = () => {
         >
           Sipariş Ver
         </button>
+        </div>
+      
       </form>
     </div>
   );
