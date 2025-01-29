@@ -1,7 +1,7 @@
 
 describe('Pizza Order Form', () => {
 
-  describe('Error Messages', () => {
+  describe('Hata Mesajları', () => {
 
     it('4 karakterden daha az isim girişi için hata dönüyor mu?', () => {
       cy.visit('http://localhost:5173/PizzaOrderForm');
@@ -69,7 +69,7 @@ describe('Pizza Order Form', () => {
     });
   });
 
-  it("should display specific error messages for each field", () => {
+  it("Her alan için belirli hata mesajları gösterilmelidir.", () => {
     cy.visit("http://localhost:5173/PizzaOrderForm");
 
     // İsmi boş bırakarak isim hatasını tetikle
