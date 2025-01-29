@@ -56,7 +56,11 @@ const PizzaOrderForm = () => {
 
     if (updatedToppings.length < 4) {
         setToppingError('Lütfen en az 4 adet malzeme seçiniz.');
-    } else {
+    }
+    else if (updatedToppings.length > 10) {
+      setToppingError('Lütfen en fazla 10 adet malzeme seçiniz.');
+    }
+    else {
         setToppingError('');
     }
 };
@@ -155,7 +159,8 @@ const PizzaOrderForm = () => {
             minLength="3" // Min 3 karakter
             data-cy="ad-input"
           />
-          {nameWarning && <p style={{ color: "red" }}name-warning="ad-input">{nameWarning}</p>} {/* Uyarı mesajı */}
+          { nameWarning && <p style={{ color: "red" }} data-cy="name-warning">{nameWarning}</p> }
+          {/* Uyarı mesajı */}
         </div>
         <div className="form-row">
         <div className="form-group">
