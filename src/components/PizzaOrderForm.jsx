@@ -14,8 +14,11 @@ const PizzaOrderForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false); // Form gönderimi sırasında butonun devre dışı olması
   const [nameWarning, setNameWarning] = useState(""); // İsim uyarısı için state
   const [sizeError, setSizeError] = useState("");
+  const [crustError, setCrustError] = useState("");
   const [toppingError, setToppingError] = useState("");
-
+  const [formError, setFormError] = useState(""); // Genel form hatası
+  const [formSuccess, setFormSuccess] = useState(""); // Başarı mesajı
+  
   const history = useHistory();
 
   const toppingOptions = [
@@ -35,30 +38,34 @@ const PizzaOrderForm = () => {
     "Kasap Sucuk",
   ];
 
+   // Form geçerliliğini kontrol eden değişken
+   const isFormValid = name.length >= 4 && size && crust && toppings.length >= 4;
+
   const handleSizeChange = (option) => {
     setSize(option);
-    setSizeError(""); // Clear error if a size is selected
+    setSizeError(""); 
   };
 
   // Malzeme seçim fonksiyonu
   const handleToppingChange = (topping) => {
-    if (toppings.includes(topping)) {
-      const updatedToppings = toppings.filter((t) => t !== topping);
-      setToppings(updatedToppings); // If topping is already selected, remove it
+    const updatedToppings = toppings.includes(topping)
+        ? toppings.filter((t) => t !== topping)
+        : [...toppings, topping];
+
+    setToppings(updatedToppings);
+
+    if (updatedToppings.length < 4) {
+        setToppingError('Lütfen en az 4 adet malzeme seçiniz.');
     } else {
-      if (toppings.length < 10) {
-        setToppings([...toppings, topping]); // Add topping if less than 10 are selected
-      } else {
-        alert("En fazla 10 malzeme seçebilirsiniz.");
-      }
+        setToppingError('');
     }
-  };
+};
 
   // Toplam Fiyat Hesaplama
   const calculateTotal = () => {
-    const basePrice = 85.5; // pizza fiyatı
-    const toppingPrice = 5; // malzeme ek ücretleri
-    const toppingsCost = toppings.length * toppingPrice; // seçilen malzeme toplam maliyet
+    const basePrice = 85.5; 
+    const toppingPrice = 5; 
+    const toppingsCost = toppings.length * toppingPrice; 
     return (basePrice + toppingsCost) * quantity; // ödenecek fiyat
   };
 
@@ -68,7 +75,7 @@ const PizzaOrderForm = () => {
     setName(inputName);
 
     // İsim uzunluğu kontrolü
-    if (inputName.length < 3) {
+    if (inputName.length < 4) {
       setNameWarning("Lütfen adınızı minimum 4 karakter olacak şekilde giriniz.");
     } else {
       setNameWarning("");
@@ -82,13 +89,14 @@ const PizzaOrderForm = () => {
     // Size validation
     if (!size) {
       setSizeError("Lütfen pizza boyutu seçiniz.");
-      return;
     }
-
+    if (!crust) {
+      setCrustError("Hamur alanı zorunludur.");
+    }
     if (toppings.length < 4) {
       setToppingError("Lütfen en az 4 adet malzeme seçiniz.");
-      return;
     }
+    
 
     if (!name || !size || !crust || toppings.length === 0) {
       alert("Lütfen tüm gerekli alanları doldurun.");
@@ -141,13 +149,13 @@ const PizzaOrderForm = () => {
             type="text"
             className="form-input"
             value={name}
-            onChange={handleNameChange} // handleNameChange kullanıldı
+            onChange={handleNameChange} 
             placeholder="Adınızı giriniz"
             required
             minLength="3" // Min 3 karakter
             data-cy="ad-input"
           />
-          {nameWarning && <p style={{ color: "red" }}>{nameWarning}</p>} {/* Uyarı mesajı */}
+          {nameWarning && <p style={{ color: "red" }}name-warning="ad-input">{nameWarning}</p>} {/* Uyarı mesajı */}
         </div>
         <div className="form-row">
         <div className="form-group">
@@ -160,7 +168,7 @@ const PizzaOrderForm = () => {
                   name="size"
                   value={option}
                   checked={size === option}
-                  onChange={() => setSize(option)}
+                  onChange={() => handleSizeChange(option)}
                   required
                   data-cy="size-input"
                 />
@@ -168,6 +176,7 @@ const PizzaOrderForm = () => {
               </label>
             ))}
           </div>
+          {sizeError && <p style={{ color: "red" }} data-cy="size-error">{sizeError}</p>}
         </div>
 
         <div className="form-group2">
@@ -185,6 +194,7 @@ const PizzaOrderForm = () => {
             <option value="Kalın">Kalın</option>
           </select>
         </div>
+        {crustError && <p style={{ color: "red" }}data-cy="crust-error">{crustError}</p>} {/* Uyarı mesajı */}
         </div>
 
 
@@ -206,6 +216,7 @@ const PizzaOrderForm = () => {
               </label>
             ))}
           </div>
+          {toppingError && <p style={{ color: "red" }} data-cy="topping-error">{toppingError}</p>}
         </div>
 
         <div className="form-group">
@@ -213,6 +224,7 @@ const PizzaOrderForm = () => {
           <textarea
             className="form-textarea"
             placeholder="Siparişe eklemek istediğiniz bir not var mı?"
+            data-cy="not-input"
             value={note}
             onChange={(e) => setNote(e.target.value)}
           />
@@ -231,6 +243,8 @@ const PizzaOrderForm = () => {
           <button
             type="button"
             className="quantity-button"
+            data-cy="submit-button"
+            disabled={!isFormValid}
             onClick={() => setQuantity((q) => q + 1)}
           >
             +
@@ -248,7 +262,8 @@ const PizzaOrderForm = () => {
         <button
           type="submit"
           className="form-submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || !isFormValid}
+    
         >
           Sipariş Ver
         </button>
