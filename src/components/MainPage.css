@@ -13,19 +13,25 @@
 }
 
 .form-container {
-    text-align: center;
-    padding: 20px;
     background-color: rgba(206, 40, 41, 0); /* Tamamen saydam arka plan */
-    margin-top: 50px;
     border: none; 
-    width: 100%; 
-    position: relative;
     box-shadow: none;
+    display: flex;
+    flex-direction: column; /* Paragrafları alt alta yerleştirir */
+    justify-content: flex-start;
+    align-items: center; /* Dikeyde ortalama */
+    height: 100vh; /* Sayfanın tamamını kapsar */
+    padding: 0 20px; /* Sayfanın kenarlarına padding ekler */
+    text-align: center; /* Paragrafları ortalar */
+}
+.form-container p {
+  margin-top: 10px; /* Hem paragraflar arasında hem de yukarıya kaymalarını sağlar */
 }
 .form-subtitle {
     color: white;
-    font-size: 24px;
+    font-size: 45px;
     margin-bottom: 20px;
+    margin-top: 20px; 
   
 }
 .form-submit {
@@ -40,22 +46,29 @@
     position: absolute; 
     left: 50%; 
     transform: translateX(-50%); 
-
+   margin-top: 200px; 
   }
 
   @media (max-width: 768px) {
     .form-container {
-        display: flex;
-        flex-direction: column; /* Paragrafları alt alta yerleştirir */
-        justify-content: center; /* Yatayda ortalama */
-        align-items: center; /* Dikeyde ortalama */
-        height: 100vh; /* Sayfanın tamamını kapsar */
-        padding: 0 20px; /* Sayfanın kenarlarına padding ekler */
-        
-      }
+      display: flex;
+      flex-direction: column; /* Paragrafları alt alta yerleştirir */
+      justify-content: flex-start; 
+      align-items: center; /* Dikeyde ortalama */
+      height: 100vh;
+      padding: 0 20px; 
+      text-align: center; 
+    .form-container p {
+      margin-top: 10px; /* Hem paragraflar arasında hem de yukarıya kaymalarını sağlar */
+  }
     .form-subtitle {
-      font-size: 20px; /* Mobilde başlık boyutunu küçültür */
-      text-align: center;
-      
+      font-size: 45px;
+      margin: 10px 0; 
+      margin-top: 0;
     }
+  
+    .form-submit {
+      margin-top: 200px; /* Buton ile paragraflar arasında boşluk ekler */
+    }
+  }
   }
