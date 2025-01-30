@@ -1,0 +1,55 @@
+.pizzalar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; /* Konteyneri yatayda ortalar */
+    gap: 20px;
+    padding: 10px;
+    max-width: 100%;
+    flex-wrap: wrap; /* Ekran küçüldüğünde öğelerin alt satıra geçmesini sağlar */
+}
+
+.pizza-div {
+    display: flex;
+    flex-direction: column; /* Resim ve metinlerin alt alta sıralanması için */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    max-width: 100%;
+    width: 300px; /* Kartın genişliği */
+    text-align: center;
+}
+
+.pizza-div img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain; /* Kesilmeden tamamen gösterilmesini sağlar */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.pizza-div .text-container {
+    display: flex;
+    flex-direction: row; /* Metinleri yatayda sıralamak için */
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.pizza-div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .pizza-div {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .pizzalar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}

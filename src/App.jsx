@@ -7,6 +7,11 @@ import Header from "./components/Header";
 import MainPage from "./components/MainPage";
 import './App.css'
 import OrderResult from "./components/OrderResult";
+import Footer from "./components/Footer";
+import Lezzetler from "./components/Lezzetler";
+import AnaLezzet from "./components/AnaLezzet";
+import Pizzalar from "./components/Pizzalar";
+import Reklam from "./components/Reklam";
 
 function App() {
 
@@ -20,7 +25,14 @@ function App() {
         <Route path="/OrderResult" component={OrderResult} />
      
       </Switch>
+      <Footer />
+      <Lezzetler /> 
+      <AnaLezzet /> 
+      <Pizzalar/>
+      <Reklam />
+
       </Router>
+      
 
       
   )

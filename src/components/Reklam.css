@@ -1,0 +1,40 @@
+.menu-container {
+    display: flex; /* Yan yana sıralar */
+    justify-content: center; /* Ortalar */
+    gap: 20px; /* Kartlar arasına boşluk koyar */
+    padding: 20px;
+}
+
+.lezzetus, .hackathlon {
+    flex: 1; /* Eşit genişlikte olmalarını sağlar */
+    max-width: 400px; /* Kartların maksimum genişliği */
+    min-height: 300px; /* Kartların minimum yüksekliği */
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Farklı Arka Plan Renkleri */
+.lezzetus {
+    background-image: url('./images/iteration-2-images/cta/kart-1.png');
+    color: white;
+}
+
+.hackathlon {
+    background-image: url('./images/iteration-2-images/cta/kart-2.png');
+    color: white;
+}
+
+/* Buton Stili */
+.button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #FDC913; 
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}

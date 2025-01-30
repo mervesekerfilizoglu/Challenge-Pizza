@@ -1,0 +1,50 @@
+.hackathlon {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-image: url('images/iteration-2-images/cta/kart-2.png');
+    background-size: cover; /* Görselin boyutunu tam kapsayacak şekilde ayarla */
+    background-position: center; /* Görseli ortala */
+    background-attachment: fixed;
+    background-attachment: fixed;
+    background-repeat: no-repeat; /* Tekrar etmesini engelle */
+    height: 100vh; /* Sayfanın tamamını kapla */
+    overflow: hidden; /* Taşmaları gizle  */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    
+}
+.form-container {
+    border: none; 
+    box-shadow: none;
+    display: flex;
+    flex-direction: column; /* Paragrafları alt alta yerleştirir */
+    justify-content: flex-start;
+    align-items: center; /* Dikeyde ortalama */
+    height: 100vh; /* Sayfanın tamamını kapsar */
+    padding: 0 20px; /* Sayfanın kenarlarına padding ekler */
+    text-align: center; /* Paragrafları ortalar */
+}
+.form-container p {
+  margin-top: 10px; /* Hem paragraflar arasında hem de yukarıya kaymalarını sağlar */
+}
+.form-subtitle {
+   
+    font-size: 45px;
+    margin-bottom: 20px;
+    margin-top: 20px; 
+  
+}
+.button {
+    padding: 5px 20px;
+    font-family: 'Barlow', sans-serif;
+    background-color: #FDC913; 
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    width: auto; 
+    height: auto; 
+    left: 50%; 
+    transform: translateX(-50%); 
+   margin-top: 200px; 
+  }
+
