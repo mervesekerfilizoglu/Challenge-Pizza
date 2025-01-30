@@ -3,6 +3,7 @@ import axios from "axios";
 import "./PizzaOrderForm.css";
 import "./Header.css";
 import { useHistory } from "react-router-dom";  // useHistory hook'unu import ediyoruz
+import "./Footer.css";
 
 const PizzaOrderForm = () => {
   const [name, setName] = useState(""); // İsim alanı için state

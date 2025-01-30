@@ -92,18 +92,10 @@
     .instagram-grid {
       grid-template-columns: repeat(3, 1fr);
     }
-  }
-  
-  @media (max-width: 768px) {
-    .grid {
-      text-align: center;
+    .instagram-grid img {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
-  
-    .instagram-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .contact-item {
-      flex-direction: column;
-    }
+ 
   }

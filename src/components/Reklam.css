@@ -1,14 +1,38 @@
 .menu-container {
-    display: flex; /* Yan yana sıralar */
-    justify-content: center; /* Ortalar */
-    gap: 20px; /* Kartlar arasına boşluk koyar */
-    padding: 20px;
+    display: flex;               /* Yan yana sıralamak için flex kullan */
+    justify-content: center;     /* Ortalamak için */
+    gap: 20px;                   /* Kartlar arasına boşluk ekler */
+    padding: 20px;               /* Etrafına padding ekler */
 }
 
-.lezzetus, .hackathlon {
-    flex: 1; /* Eşit genişlikte olmalarını sağlar */
-    max-width: 400px; /* Kartların maksimum genişliği */
-    min-height: 300px; /* Kartların minimum yüksekliği */
+.lezzetus {
+    flex: 1;                     /* Eşit genişlikte olmalarını sağlar */
+    max-width: 400px;            /* Kartın maksimum genişliği */
+    min-height: 300px;           /* Kartın minimum yüksekliği */
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;      /* Lezzetus içindeki öğeleri dikey hizalar */
+    align-items: center;
+    justify-content: center;
+    background-image: url('images/iteration-2-images/cta/kart-1.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+/* Alt divi flex container yapıyoruz ve öğeleri alt alta hizalıyoruz */
+.alt {
+    display: flex;
+    flex-direction: column;       /* hackathlon ve kurye alt alta sıralanacak */
+    gap: 20px;                   /* Aralarına boşluk ekler */
+}
+
+.hackathlon, .kurye {
+    flex: 1;                     /* Eşit genişlikte olmalarını sağlar */
+    max-width: 400px;            /* Kartların maksimum genişliği */
+    min-height: 300px;           /* Kartların minimum yüksekliği */
     text-align: center;
     padding: 20px;
     border-radius: 10px;
@@ -18,14 +42,17 @@
     justify-content: center;
 }
 
-/* Farklı Arka Plan Renkleri */
-.lezzetus {
-    background-image: url('./images/iteration-2-images/cta/kart-1.png');
+.hackathlon {
+    background-image: url('images/iteration-2-images/cta/kart-2.png');
+    background-size: cover;
+    background-position: center;
     color: white;
 }
 
-.hackathlon {
-    background-image: url('./images/iteration-2-images/cta/kart-2.png');
+.kurye { 
+    background-image: url('images/iteration-2-images/cta/kart-3.png');
+    background-size: cover;
+    background-position: center;
     color: white;
 }
 
@@ -37,4 +64,18 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-container {
+        flex-direction: column; /* Ekran küçük olduğunda elemanları alt alta sıralar */
+        align-items: center;     /* Ortalar */
+    }
+
+    /* Alt div içinde hackathlon ve kurye kartları için alt alta sıralama */
+    .alt {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 }

@@ -7,11 +7,13 @@ import Header from "./components/Header";
 import MainPage from "./components/MainPage";
 import './App.css'
 import OrderResult from "./components/OrderResult";
-import Footer from "./components/Footer";
-import Lezzetler from "./components/Lezzetler";
+
 import AnaLezzet from "./components/AnaLezzet";
-import Pizzalar from "./components/Pizzalar";
 import Reklam from "./components/Reklam";
+import Baslik from "./components/Baslik";
+import Lezzetler from "./components/Lezzetler";
+import Pizzalar from "./components/Pizzalar";
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -23,18 +25,16 @@ function App() {
         <Route path="/" exact component={MainPage} />
         <Route path="/PizzaOrderForm" component={PizzaOrderForm}/>
         <Route path="/OrderResult" component={OrderResult} />
-     
       </Switch>
-      <Footer />
-      <Lezzetler /> 
-      <AnaLezzet /> 
-      <Pizzalar/>
+      <AnaLezzet />
       <Reklam />
-
+      <Baslik/>
+      <Lezzetler /> 
+      <Pizzalar/>
+      <Footer />
+   
       </Router>
-      
-
-      
+    
   )
 }
 
