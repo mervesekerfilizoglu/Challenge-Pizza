@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";  // useHistory hook'unu import ediyoruz
+import Footer from "./Footer";
 import './PizzaOrderForm.css';
 
 const PizzaOrderForm = () => {
@@ -132,7 +133,7 @@ const PizzaOrderForm = () => {
       alert("Sipariş başarıyla gönderildi!");
 
 
-      setOrderDetails(orderData);
+    //  setOrderDetails(orderData);
 
 
 
@@ -282,6 +283,7 @@ const PizzaOrderForm = () => {
         </div>
       
       </form>
+      <Footer />
     </div>
   );
 };

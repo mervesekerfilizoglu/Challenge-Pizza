@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";  // useHistory hook
+import Footer from "./Footer";
 import "./OrderResult.css";
 
 export default function OrderResult() {
@@ -20,8 +21,10 @@ export default function OrderResult() {
             
                 <p className="form-subtitle">TEBRİKLER!</p>
                 <p className="form-subtitle">SİPARİŞİNİZ ALINDI!</p>
+                
                 </div>
+                <Footer />
         </div>
     );
 
-}
+};

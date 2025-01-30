@@ -5,7 +5,7 @@
     background-position: center; /* Görseli ortala */
     background-repeat: no-repeat; /* Tekrar etmesini engelle */
     height: 100vh; /* Sayfanın tamamını kapla */
-    overflow: hidden; /* Taşmaları gizle  */
+    overflow:visible; /* Taşmaları gizle  */
     margin: 0;
     padding: 0;
     text-align: center;

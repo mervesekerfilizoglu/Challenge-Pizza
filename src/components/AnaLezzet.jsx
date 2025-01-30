@@ -29,5 +29,5 @@ export default function AnaLezzet ()
                 <img src="images\iteration-2-images\icons\6.svg" alt="" />
             </div>
         </div>
-    )
-}
+    );
+};
