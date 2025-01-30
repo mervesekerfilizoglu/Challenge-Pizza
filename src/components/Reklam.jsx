@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";  // useHistory hook
+import "./Reklam.css";
 
 export default function Reklam () {  
 

@@ -1,7 +1,7 @@
+import "./AnaLezzet.css";
+
 export default function AnaLezzet ()
 {
-
-
     return(
         <div className="anaLezzet">
             <div className="icon-div2">

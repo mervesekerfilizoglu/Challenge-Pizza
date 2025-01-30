@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";  // Router, Route ve Switch'i import ediyoruz
+import './App.css';
 
-
-import PizzaOrderForm from "./components/PizzaOrderForm";
 import Header from "./components/Header";
+import PizzaOrderForm from "./components/PizzaOrderForm";
 import MainPage from "./components/MainPage";
-import './App.css'
+
 import OrderResult from "./components/OrderResult";
 
 import AnaLezzet from "./components/AnaLezzet";
@@ -35,7 +35,7 @@ function App() {
    
       </Router>
     
-  )
+  );
 }
 
-export default App
+export default App;

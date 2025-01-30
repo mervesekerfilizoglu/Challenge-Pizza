@@ -1,7 +1,7 @@
+import "./Lezzetler.css";
+
 export default function Lezzetler ()
 {
-
-
     return(
         <div className="lezzetler">
             <div className="icon-div">

@@ -1,8 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";  // useHistory hook
-
-import "./OrderResult.css";  
-import "./Header.css";  
+import "./OrderResult.css";
 
 export default function OrderResult() {
     const history = useHistory();  // useHistory hook

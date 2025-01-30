@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./PizzaOrderForm.css";
-import "./Header.css";
 import { useHistory } from "react-router-dom";  // useHistory hook'unu import ediyoruz
-import "./Footer.css";
+import './PizzaOrderForm.css';
 
 const PizzaOrderForm = () => {
   const [name, setName] = useState(""); // İsim alanı için state
@@ -19,6 +17,7 @@ const PizzaOrderForm = () => {
   const [toppingError, setToppingError] = useState("");
   const [formError, setFormError] = useState(""); // Genel form hatası
   const [formSuccess, setFormSuccess] = useState(""); // Başarı mesajı
+  const [totalCost, setTotalCost] = useState(""); 
   
   const history = useHistory();
 
@@ -71,7 +70,8 @@ const PizzaOrderForm = () => {
     const basePrice = 85.5; 
     const toppingPrice = 5; 
     const toppingsCost = toppings.length * toppingPrice; 
-    return (basePrice + toppingsCost) * quantity; // ödenecek fiyat
+    const totalCost = (basePrice + toppingsCost) * quantity;
+    return totalCost;  // ödenecek fiyat
   };
 
   // İsim değişikliği ve uyarı kontrolü
@@ -117,6 +117,7 @@ const PizzaOrderForm = () => {
       malzemeler: toppings,
       not: note,
       adet: quantity,
+      toplamTutar: calculateTotal(),
     };
 
     try {
@@ -129,6 +130,11 @@ const PizzaOrderForm = () => {
       const result = response.data;
       console.log("Sipariş Özeti:", result);
       alert("Sipariş başarıyla gönderildi!");
+
+
+      setOrderDetails(orderData);
+
+
 
       history.push("/OrderResult"); // History.push ile yönlendir
     } catch (error) {
