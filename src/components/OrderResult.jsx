@@ -12,17 +12,20 @@ const orderDetails = location.state?.orderDetails;
         <div className="form-container">
             
                 <p className="form-subtitle6">lezzetin yolda</p>
-                <p className="form-subtitle">SİPARİŞ ALINDI!</p>
+                <p className="form-subtitle7">SİPARİŞ ALINDI!</p>
                 
                 {orderDetails && (
           <div className="order-summary">
-            <h3>Sipariş Özeti</h3>
-            <p><strong>Adı:</strong> {orderDetails.isim}</p>
-            <p><strong>Boyut:</strong> {orderDetails.boyut}</p>
-            <p><strong>Hamur:</strong> {orderDetails.hamur}</p>
-            <p><strong>Malzemeler:</strong> {orderDetails.malzemeler.join(", ")}</p>
-            <p><strong>Sipariş Adedi:</strong> {orderDetails.adet}</p>
-            <p><strong>Toplam Tutar:</strong> {orderDetails.toplamTutar}₺</p>
+            
+            <h3 className="name"><strong> {orderDetails.isim}</strong></h3>
+            <p className="size">Boyut:<strong>{orderDetails.boyut}</strong></p>
+            <p className="hamur">Hamur:<strong> {orderDetails.hamur}</strong></p>
+            <p className="malzeme">Malzemeler:<strong> {orderDetails.malzemeler.join(", ")}</strong></p>
+            <p className="aded">Sipariş Adedi:<strong> {orderDetails.adet}</strong></p>
+            <div className="toplam">
+            <p className="toplams"><strong>Sipariş Toplamı</strong></p>
+            <p className="toplam">Toplam:<strong> {orderDetails.toplamTutar}₺</strong></p>
+          </div>
           </div>
         )}
         

@@ -6,15 +6,16 @@
     background-repeat: no-repeat; 
     height: 100vh;
     overflow: auto; 
+    color: white
   
 }
 .form-subtitle6 {
     display: flex;
     color: yellow !important; 
     font-family: 'Satisfy', cursive; /* Satisfy fontu */
-    font-size: 36px;
+    font-size: 42px;
     margin:0px;
-    align-items: center;
+    text-align: center;
 }
 .form-subtitle7 {
     display: flex;
@@ -23,4 +24,20 @@
     font-size: 52px;
     margin:0px;
   text-align: center;
+  border-bottom: 3px solid white; 
+  padding-bottom: 10px; 
+}
+.name {
+    display: flex;
+  justify-content: center; /* Yatayda ortalar */
+ 
+}
+.malzeme {
+    width: 100%; /* Genişlik sınırlaması ekler */
+  white-space: normal; /* Satır sonlarına kaymasını sağlar */
+  word-wrap: break-word;
+}
+.toplam {
+gap: 15px;
+
 }

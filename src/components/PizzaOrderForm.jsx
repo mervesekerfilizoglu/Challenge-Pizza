@@ -278,7 +278,7 @@ const PizzaOrderForm = () => {
         </div>
         <Footer className="special-footer" />
       </form>
-      <Footer />
+      
     </div>
   );
 

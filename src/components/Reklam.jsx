@@ -20,15 +20,15 @@ export default function Reklam () {
             <div className="lezzetus">
                 <p className="form-subtitle5">Özel</p>
                 <p className="form-subtitle5">Lezzetus</p>
-                <p className="form-subtitle6">Position:Absolute Acı Burger</p>
-                <button onClick={handleClick}  className="button">SİPARİŞ VER</button>
+                <p className="form-subtitle10">Position:Absolute Acı Burger</p>
+                <button onClick={handleClick}  className="button1">SİPARİŞ VER</button>
             </div>
             <div className="alt">
             {/* Hackathlon Bölümü */}
             <div className="hackathlon">
                 <p className="form-subtitle">Hackathlon</p>
                 <p className="form-subtitle">Burger Menü</p>
-                <button onClick={handleClick}  className="button">SİPARİŞ VER</button>
+                <button onClick={handleClick}  className="button1">SİPARİŞ VER</button>
             </div>
 
               {/* Kurye bölümü */}
@@ -36,7 +36,7 @@ export default function Reklam () {
                 <p className="form-subtitle3">Çooooooook</p>
                 <p className="form-subtitle4">hızlı</p>             
                   <p className="form-subtitle4">npm gibi kurye </p>
-                  <button onClick={handleClick}  className="button">SİPARİŞ VER</button>
+                  <button onClick={handleClick}  className="button1">SİPARİŞ VER</button>
             </div>
             </div>
         </div>
