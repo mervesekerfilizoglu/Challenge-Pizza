@@ -1,26 +1,29 @@
-.form-subtitle {
-    color: white;
+.baslik {
     font-size: 45px;
     margin-bottom: 20px;
     margin-top: 20px; 
-  
 }
-@media (max-width: 480px) {
-    .form-subtitle {
-        display: grid; 
-        grid-template-columns: repeat(2, 200px); 
-        grid-auto-rows: 100px; 
-        gap: 10px; 
-        justify-content: center; 
 
+.form-subtitle1 {
+    color: #CE2829 !important; 
+    font-family: 'Satisfy', cursive; /* Satisfy fontu */
+}
+
+.form-subtitle2 {
+    color: black;
+    font-weight: bold; /* Yazıyı kalın yapar */
+    font-family: 'Barlow', sans-serif;
+}
+
+@media (max-width: 480px) {
+    .baslik {
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
         align-items: center;
-        justify-content: center; 
-        width: 200px; 
-        height: 100px; 
+        justify-content: center;
+        width: 200px;
+        height: 100px;
         box-sizing: border-box;
-        text-align: center; 
+        text-align: center;
     }
-  
 }

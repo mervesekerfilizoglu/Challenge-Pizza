@@ -8,3 +8,19 @@
     overflow: auto; 
   
 }
+.form-subtitle6 {
+    display: flex;
+    color: yellow !important; 
+    font-family: 'Satisfy', cursive; /* Satisfy fontu */
+    font-size: 36px;
+    margin:0px;
+    align-items: center;
+}
+.form-subtitle7 {
+    display: flex;
+    color: white!important; 
+    font-family: 'Barlow', sans-serif;
+    font-size: 52px;
+    margin:0px;
+  text-align: center;
+}

@@ -2,9 +2,9 @@ import React from "react";
 import { FaMapMarkerAlt, FaEnvelope, FaPhone } from "react-icons/fa";
 import "./Footer.css";
 
-export default function Footer() {
+export default function Footer({ className }) {
   return (
-    <footer className="footer">
+    <footer className={`footer ${className}`}>
       <div className="container">
         <div className="grid">
           <div className="info">

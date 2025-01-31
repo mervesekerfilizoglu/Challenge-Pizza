@@ -100,5 +100,9 @@
       align-items: center;
       justify-content: center;
     }
- 
+    .special-footer {
+      width: 200%;  
+      margin-left: -50%;  
+
+    }
   }

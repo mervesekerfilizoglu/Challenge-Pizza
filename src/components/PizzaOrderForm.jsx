@@ -18,8 +18,8 @@ const PizzaOrderForm = () => {
   const [toppingError, setToppingError] = useState("");
   const [formError, setFormError] = useState(""); // Genel form hatası
   const [formSuccess, setFormSuccess] = useState(""); // Başarı mesajı
-  const [totalCost, setTotalCost] = useState(""); 
-  
+  const [totalCost, setTotalCost] = useState("");
+
   const history = useHistory();
 
   const toppingOptions = [
@@ -39,38 +39,38 @@ const PizzaOrderForm = () => {
     "Kasap Sucuk",
   ];
 
-   // Form geçerliliğini kontrol eden değişken
-   const isFormValid = name.length >= 4 && size && crust && toppings.length >= 4;
+  // Form geçerliliğini kontrol eden değişken
+  const isFormValid = name.length >= 4 && size && crust && toppings.length >= 4;
 
   const handleSizeChange = (option) => {
     setSize(option);
-    setSizeError(""); 
+    setSizeError("");
   };
 
   // Malzeme seçim fonksiyonu
   const handleToppingChange = (topping) => {
     const updatedToppings = toppings.includes(topping)
-        ? toppings.filter((t) => t !== topping)
-        : [...toppings, topping];
+      ? toppings.filter((t) => t !== topping)
+      : [...toppings, topping];
 
     setToppings(updatedToppings);
 
     if (updatedToppings.length < 4) {
-        setToppingError('Lütfen en az 4 adet malzeme seçiniz.');
+      setToppingError('Lütfen en az 4 adet malzeme seçiniz.');
     }
     else if (updatedToppings.length > 10) {
       setToppingError('Lütfen en fazla 10 adet malzeme seçiniz.');
     }
     else {
-        setToppingError('');
+      setToppingError('');
     }
-};
+  };
 
   // Toplam Fiyat Hesaplama
   const calculateTotal = () => {
-    const basePrice = 85.5; 
-    const toppingPrice = 5; 
-    const toppingsCost = toppings.length * toppingPrice; 
+    const basePrice = 85.5;
+    const toppingPrice = 5;
+    const toppingsCost = toppings.length * toppingPrice;
     const totalCost = (basePrice + toppingsCost) * quantity;
     return totalCost;  // ödenecek fiyat
   };
@@ -102,7 +102,7 @@ const PizzaOrderForm = () => {
     if (toppings.length < 4) {
       setToppingError("Lütfen en az 4 adet malzeme seçiniz.");
     }
-    
+
 
     if (!name || !size || !crust || toppings.length === 0) {
       alert("Lütfen tüm gerekli alanları doldurun.");
@@ -133,7 +133,7 @@ const PizzaOrderForm = () => {
       alert("Sipariş başarıyla gönderildi!");
 
 
-    //  setOrderDetails(orderData);
+      //  setOrderDetails(orderData);
 
 
 
@@ -147,6 +147,7 @@ const PizzaOrderForm = () => {
   };
 
   return (
+
     <div className="form-container">
       <form onSubmit={handleSubmit}>
         <h2 className="form-subtitle">Position Absolute Acı Pizza</h2>
@@ -161,53 +162,53 @@ const PizzaOrderForm = () => {
             type="text"
             className="form-input"
             value={name}
-            onChange={handleNameChange} 
+            onChange={handleNameChange}
             placeholder="Adınızı giriniz"
             required
             minLength="3" // Min 3 karakter
             data-cy="ad-input"
           />
-          { nameWarning && <p style={{ color: "red" }} data-cy="name-warning">{nameWarning}</p> }
+          {nameWarning && <p style={{ color: "red" }} data-cy="name-warning">{nameWarning}</p>}
           {/* Uyarı mesajı */}
         </div>
         <div className="form-row">
-        <div className="form-group">
-          <label className="form-label">Boyut Seç *</label>
-          <div className="form-options">
-            {["Küçük", "Orta", "Büyük"].map((option) => (
-              <label key={option} className="form-option">
-                <input
-                  type="radio"
-                  name="size"
-                  value={option}
-                  checked={size === option}
-                  onChange={() => handleSizeChange(option)}
-                  required
-                  data-cy="size-input"
-                />
-                <span>{option}</span>
-              </label>
-            ))}
+          <div className="form-group">
+            <label className="form-label">Boyut Seç *</label>
+            <div className="form-options">
+              {["Küçük", "Orta", "Büyük"].map((option) => (
+                <label key={option} className="form-option">
+                  <input
+                    type="radio"
+                    name="size"
+                    value={option}
+                    checked={size === option}
+                    onChange={() => handleSizeChange(option)}
+                    required
+                    data-cy="size-input"
+                  />
+                  <span>{option}</span>
+                </label>
+              ))}
+            </div>
+            {sizeError && <p style={{ color: "red" }} data-cy="size-error">{sizeError}</p>}
           </div>
-          {sizeError && <p style={{ color: "red" }} data-cy="size-error">{sizeError}</p>}
-        </div>
 
-        <div className="form-group2">
-          <label className="form-label">Hamur Seç *</label>
-          <select
-            className="form-select"
-            value={crust}
-            onChange={(e) => setCrust(e.target.value)}
-            required
-            data-cy="hamur-input"
-          >
-            <option value="">Hamur Kalınlığı</option>
-            <option value="İnce">İnce</option>
-            <option value="Normal">Normal</option>
-            <option value="Kalın">Kalın</option>
-          </select>
-        </div>
-        {crustError && <p style={{ color: "red" }}data-cy="crust-error">{crustError}</p>} {/* Uyarı mesajı */}
+          <div className="form-group2">
+            <label className="form-label">Hamur Seç *</label>
+            <select
+              className="form-select"
+              value={crust}
+              onChange={(e) => setCrust(e.target.value)}
+              required
+              data-cy="hamur-input"
+            >
+              <option value="">Hamur Kalınlığı</option>
+              <option value="İnce">İnce</option>
+              <option value="Normal">Normal</option>
+              <option value="Kalın">Kalın</option>
+            </select>
+          </div>
+          {crustError && <p style={{ color: "red" }} data-cy="crust-error">{crustError}</p>} {/* Uyarı mesajı */}
         </div>
 
 
@@ -266,26 +267,26 @@ const PizzaOrderForm = () => {
 
 
         <div className="form-row2">
-        <div className="form-group">
-          <p className="form-total">
-            Sipariş Toplamı: <span>{calculateTotal().toFixed(2)}₺</span>
-          </p>
+          <div className="form-group">
+            <p className="form-total">
+              Sipariş Toplamı: <span>{calculateTotal().toFixed(2)}₺</span>
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            className="form-submit"
+            disabled={isSubmitting || !isFormValid}
+          >
+            Sipariş Ver
+          </button>
         </div>
-      
-        <button
-          type="submit"
-          className="form-submit"
-          disabled={isSubmitting || !isFormValid}
-    
-        >
-          Sipariş Ver
-        </button>
-        </div>
-      
+        <Footer className="special-footer" />
       </form>
-      <Footer />
+
     </div>
   );
+
 };
 
 export default PizzaOrderForm;

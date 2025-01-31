@@ -3,79 +3,128 @@
     justify-content: center;     /* Ortalamak için */
     gap: 20px;                   /* Kartlar arasına boşluk ekler */
     padding: 20px;               /* Etrafına padding ekler */
+    max-width: 100%;             /* Kartın maksimum genişliği */
+    min-height: auto;
 }
 
 .lezzetus {
     flex: 1;                     /* Eşit genişlikte olmalarını sağlar */
-    max-width: 400px;            /* Kartın maksimum genişliği */
-    min-height: 300px;           /* Kartın minimum yüksekliği */
+    max-width: auto;             /* Kartın maksimum genişliği */
+    min-height: auto;          /* Kartın minimum yüksekliği */
     text-align: center;
-    padding: 20px;
+   
     border-radius: 10px;
     display: flex;
     flex-direction: column;      /* Lezzetus içindeki öğeleri dikey hizalar */
     align-items: center;
     justify-content: center;
     background-image: url('images/iteration-2-images/cta/kart-1.png');
-    background-size: cover;
+    background-size: contain;      /* Resmi div'e tamamen sığdırır */
+    background-repeat: no-repeat;
     background-position: center;
     color: white;
+    position: relative;          /* Butonun konumlandırılabilmesi için relative */
+    overflow: hidden;            /* İçeriğin taşmasını engeller */
 }
-
-/* Alt divi flex container yapıyoruz ve öğeleri alt alta hizalıyoruz */
+.form-subtitle5 {
+    color: white;
+    font-size: 48px;
+    font-family: 'Quattrocento', serif;
+    margin:0px;
+    text-align: left;  /* Yazıyı sola hizalar */
+    width: 50%;       /* Yatayda tüm genişliği kullanmasını sağlar */
+}
+.form-subtitle6 {
+    display: flex;
+    color: white;
+    font-size: auto;
+    font-weight: bold; /* Yazıyı kalın yapar */
+    font-family: 'Barlow', sans-serif;
+    text-align: left;  /* Yazıyı sola hizalar */
+    width: 50%;       /* Yatayda tüm genişliği kullanmasını sağlar */
+}
 .alt {
     display: flex;
-    flex-direction: column;       /* hackathlon ve kurye alt alta sıralanacak */
-    gap: 20px;                   /* Aralarına boşluk ekler */
+    flex-direction: column;      /* Hackathlon ve kurye alt alta sıralanacak */
+    gap: 20px;
 }
 
 .hackathlon, .kurye {
-    flex: 1;                     /* Eşit genişlikte olmalarını sağlar */
-    max-width: 400px;            /* Kartların maksimum genişliği */
-    min-height: 300px;           /* Kartların minimum yüksekliği */
+    display: flex;                    /* Eşit genişlikte olmalarını sağlar */
+    max-width: 300%;             /* Kartın maksimum genişliği */
+    min-height: 100px;           /* Kartların minimum yüksekliği */
     text-align: center;
-    padding: 20px;
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;      /* İçindeki öğeleri dikey hizalar */
     align-items: center;
     justify-content: center;
+    color: white;
+    position: relative;          /* Butonun konumlandırılabilmesi için relative */
+    overflow: hidden;            /* İçeriğin taşmasını engeller */
+ 
 }
 
 .hackathlon {
+    display: flex;                    /* Eşit genişlikte olmalarını sağlar */
+    max-width: 300%;             /* Kartın maksimum genişliği */
+    min-height: 100px;           /* Kartların minimum yüksekliği */
+    text-align: center;
     background-image: url('images/iteration-2-images/cta/kart-2.png');
-    background-size: cover;
+    background-size: cover;      /* Resmi div'e tamamen sığdırır */
+    background-repeat: no-repeat;
     background-position: center;
-    color: white;
 }
 
 .kurye { 
     background-image: url('images/iteration-2-images/cta/kart-3.png');
-    background-size: cover;
+    background-size: cover;      /* Resmi div'e tamamen sığdırır */
+    background-repeat: no-repeat;
     background-position: center;
-    color: white;
 }
 
 /* Buton Stili */
 .button {
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 10px;
+    font-size: auto;
     background-color: #FDC913; 
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    position: absolute;          /* Butonu arka planda tam olarak konumlandırmak için absolute kullanıyoruz */
+    bottom: 20px;                /* Butonu kartın altına yerleştiriyoruz */
+    left: 32%;                   /* Butonu yatayda ortalıyoruz */
+    transform: translateX(-50%); /* Yatayda tam ortalamayı sağlamak için kullanıyoruz */
 }
 
+.form-subtitle3 {
+    color: #CE2829 !important; 
+    font-family: 'Barlow', sans-serif;
+    
+    
+}
+
+.form-subtitle4 {
+    color: black !important; 
+    font-family: 'Barlow', sans-serif;
+
+}
+
+/* Mobil Cihazlar İçin Medya Sorgusu */
 @media (max-width: 768px) {
     .menu-container {
         flex-direction: column; /* Ekran küçük olduğunda elemanları alt alta sıralar */
         align-items: center;     /* Ortalar */
     }
 
-    /* Alt div içinde hackathlon ve kurye kartları için alt alta sıralama */
     .alt {
         display: flex;
         flex-direction: column;
         gap: 20px;
+    }
+
+    .button {
+        font-size: 16px;  /* Buton font boyutunu mobilde biraz küçültüyoruz */
+        bottom: 10px;      /* Butonu mobilde daha yakın yapıyoruz */
     }
 }

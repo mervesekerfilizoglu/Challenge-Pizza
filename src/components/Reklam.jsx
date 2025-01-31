@@ -18,9 +18,9 @@ export default function Reklam () {
         <div className="menu-container">
             {/* Lezzetus Bölümü */}
             <div className="lezzetus">
-                <p className="form-subtitle">Özel</p>
-                <p className="form-subtitle">Lezzetus</p>
-                <p className="form-subtitle">Position:Absolute Acı Burger</p>
+                <p className="form-subtitle5">Özel</p>
+                <p className="form-subtitle5">Lezzetus</p>
+                <p className="form-subtitle6">Position:Absolute Acı Burger</p>
                 <button onClick={handleClick}  className="button">SİPARİŞ VER</button>
             </div>
             <div className="alt">
@@ -33,10 +33,9 @@ export default function Reklam () {
 
               {/* Kurye bölümü */}
               <div className="kurye">
-                <p className="form-subtitle">Kurye</p>
-                <p className="form-subtitle">Çooooooook</p>
-                <p className="form-subtitle">hızlı</p>             
-                  <p className="form-subtitle">npm gibi kurye </p>
+                <p className="form-subtitle3">Çooooooook</p>
+                <p className="form-subtitle4">hızlı</p>             
+                  <p className="form-subtitle4">npm gibi kurye </p>
                   <button onClick={handleClick}  className="button">SİPARİŞ VER</button>
             </div>
             </div>

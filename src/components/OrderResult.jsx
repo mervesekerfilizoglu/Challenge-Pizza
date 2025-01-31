@@ -19,8 +19,8 @@ export default function OrderResult() {
         <div className="OrderResult">
         <div className="form-container">
             
-                <p className="form-subtitle">TEBRİKLER!</p>
-                <p className="form-subtitle">SİPARİŞİNİZ ALINDI!</p>
+                <p className="form-subtitle6">lezzetin yolda</p>
+                <p className="form-subtitle">SİPARİŞ ALINDI!</p>
                 
                 </div>
                 <Footer />
