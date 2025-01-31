@@ -131,7 +131,7 @@ const PizzaOrderForm = () => {
       console.log("Sipariş Özeti:", result);
       alert("Sipariş başarıyla gönderildi!");
 
-      history.push("/OrderResult", { orderDetails: result }); // Veriyi OrderResult sayfasına gönder
+      history.push("/OrderResult"); // History.push ile yönlendir
     } catch (error) {
       console.error("Sipariş gönderiminde hata:", error);
       alert("Sipariş gönderilirken bir hata oluştu.");
